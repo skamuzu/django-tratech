@@ -1,0 +1,15 @@
+[project]
+name = "final-tratech"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dj-rest-auth[with-social]>=5.0.2",
+    "django>=6.0.1",
+    "django-extensions>=4.1",
+    "djangorestframework>=3.16.1",
+    "djangorestframework-camel-case>=1.4.2",
+    "djangorestframework-simplejwt>=5.5.1",
+    "python-dotenv>=1.2.1",
+]
