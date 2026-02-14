@@ -1,0 +1,233 @@
+fcc_clone/
+├── manage.py
+├── pyproject.toml
+├── requirements/
+│   ├── base.txt
+│   ├── dev.txt
+│   └── prod.txt
+├── docker/
+│   ├── django/
+│   ├── nginx/
+│   └── postgres/
+├── .env
+├── config/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── celery.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── settings/
+│       ├── __init__.py
+│       ├── base.py
+│       ├── dev.py
+│       └── prod.py
+├── apps/
+│   ├── accounts/
+│   ├── courses/
+│   ├── lessons/
+│   ├── challenges/
+│   ├── submissions/
+│   ├── projects/
+│   ├── certifications/
+│   ├── discussions/
+│   ├── progress/
+│   ├── achievements/
+│   ├── notifications/
+│   └── common/
+├── services/
+│   ├── code_runner/
+│   ├── grading/
+│   ├── sandbox/
+│   └── analytics/
+├── integrations/
+│   ├── github/
+│   ├── google/
+│   └── email/
+├── static/
+├── media/
+├── scripts/
+└── tests/
+
+App Responsibilities
+accounts/
+
+Users
+
+Profiles
+
+OAuth
+
+JWT auth
+
+Permissions / roles
+
+courses/
+
+Course tracks (e.g. Responsive Web Design, Backend Dev)
+
+Course metadata
+
+Syllabi structure
+
+lessons/
+
+Learning units
+
+Lesson content
+
+Markdown / HTML rendering
+
+challenges/
+
+Coding challenges
+
+Test cases
+
+Instructions
+
+Difficulty levels
+
+submissions/
+
+Code submissions
+
+Test execution results
+
+Pass/fail status
+
+History tracking
+
+projects/
+
+Final certification projects
+
+Validation logic
+
+Auto/manual grading
+
+certifications/
+
+Certificates
+
+PDF generation
+
+Public certificate URLs
+
+discussions/
+
+Forum
+
+Comments
+
+Voting
+
+Thread subscriptions
+
+progress/
+
+User progress tracking
+
+Completion stats
+
+Skill-tree progression
+
+achievements/
+
+Badges
+
+Streaks
+
+Milestones
+
+notifications/
+
+Email
+
+In-app notifications
+
+Webhooks
+
+common/
+
+Shared utils
+
+Abstract models
+
+Base serializers
+
+Mixins
+
+Pagination
+
+Permissions
+
+Services Layer (Heavy Logic Isolation)
+services/
+├── code_runner/
+│   ├── docker_executor.py
+│   ├── judge.py
+│   └── limits.py
+├── grading/
+│   ├── test_engine.py
+│   ├── validators.py
+│   └── scoring.py
+├── sandbox/
+│   ├── container_manager.py
+│   └── isolation.py
+└── analytics/
+    ├── event_tracker.py
+    └── metrics.py
+
+
+Used for:
+
+Running untrusted user code
+
+Secure sandboxing
+
+Scoring logic
+
+Code evaluation pipelines
+
+API Versioning Strategy
+apps/
+ └── api/
+     ├── v1/
+     │   ├── accounts/
+     │   ├── courses/
+     │   ├── challenges/
+     │   └── progress/
+     └── v2/
+
+Settings Breakdown
+config/settings/
+├── base.py        # shared
+├── dev.py         # debug, local
+├── prod.py        # hardened security
+
+Key Design Principles
+
+Domain-driven app separation
+
+Thin views, fat services
+
+Stateless API backend
+
+Async background workers
+
+Horizontal scalability
+
+Strict permission boundaries
+
+Optional Microservice Split (Later Stage)
+
+Auth Service
+
+Code Execution Service
+
+Grading Service
+
+Certificate Generator
+
+
+
