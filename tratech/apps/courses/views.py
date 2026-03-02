@@ -1,8 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView
 from rest_framework.parsers import MultiPartParser, JSONParser, FormParser
 from .models import Course
-from .serializers import CourseGeneralSerializer, CourseSpecificSerializer
+from .serializers import CourseGeneralSerializer, CourseSpecificSerializer, CourseWithModulesSerializer
 import cloudinary.uploader
 
 class CourseGeneralView(ListCreateAPIView):
@@ -15,3 +15,10 @@ class CourseSpecificView(RetrieveUpdateDestroyAPIView):
     serializer_class = CourseSpecificSerializer
     lookup_field = "slug"
     lookup_url_kwarg = "slug"
+    
+class CourseModuleView(RetrieveAPIView):
+    serializer_class = CourseWithModulesSerializer
+    lookup_field = 'slug'
+    queryset = Course.objects.all()
+    
+    

@@ -14,3 +14,6 @@ class Module(models.Model):
         on_delete=models.CASCADE,
         related_name="modules"
     )
+    
+    def __str__(self):
+        return self.name
