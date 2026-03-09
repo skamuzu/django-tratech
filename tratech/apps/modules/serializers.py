@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from apps.lessons.serializers import LessonListSerializer
 from .models import Module
 
 class ModuleSerializer(serializers.ModelSerializer):
@@ -7,6 +8,8 @@ class ModuleSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class ModuleListSerializer(serializers.ModelSerializer):
+    lessons = LessonListSerializer(many=True)
+    
     class Meta:
         model = Module
-        fields = ['name']
+        fields = ['name', 'lessons', "total_lessons_in_module"]

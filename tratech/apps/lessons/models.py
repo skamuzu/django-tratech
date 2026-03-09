@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 from uuid import uuid4
 
@@ -12,6 +13,13 @@ class Lesson(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     module = models.ForeignKey("modules.Module",  on_delete=models.CASCADE, related_name="lessons")
+    slug = models.SlugField(blank=True, null=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+            
     
     class Meta:
         constraints = [

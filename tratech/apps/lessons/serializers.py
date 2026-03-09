@@ -6,3 +6,8 @@ class LessonGeneralSerializer(serializers.ModelSerializer):
         model = Lesson
         fields = '__all__'
         
+class LessonListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lesson
+        fields = ["name","slug"]
+        

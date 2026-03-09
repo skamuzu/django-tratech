@@ -2,6 +2,7 @@ from django.db import models
 from uuid import uuid4
 from django_validated_jsonfield import ValidatedJSONField
 from django.utils.text import slugify
+from apps.lessons.models import Lesson
 
 
 class Course(models.Model):
@@ -38,6 +39,9 @@ class Course(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
             
+    @property
+    def total_lessons_in_course(self):
+        return Lesson.objects.filter(module__course=self).count()
 
     def __str__(self):
         return self.name
