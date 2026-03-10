@@ -64,10 +64,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "dj_rest_auth.registration",
     "apps.accounts.apps.AccountsConfig",
-    "apps.courses.apps.CoursesConfig",
-    "apps.modules.apps.ModulesConfig",
-    "apps.lessons.apps.LessonsConfig",
-    "apps.enrollments.apps.EnrollmentsConfig",
+    "apps.coursework.apps.CourseWorkConfig",
     "django_extensions",
     "corsheaders",
 ]

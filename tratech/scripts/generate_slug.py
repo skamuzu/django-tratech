@@ -1,4 +1,4 @@
-from apps.lessons.models import Lesson
+from apps.coursework.models import Lesson
 from django.utils.text import slugify
 
 def run():

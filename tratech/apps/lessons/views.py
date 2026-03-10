@@ -1,8 +1,0 @@
-from rest_framework.viewsets import ModelViewSet
-from .models import Lesson
-from .serializers import LessonGeneralSerializer
-
-class LessonViewSet(ModelViewSet):
-    queryset = Lesson.objects.all()
-    serializer_class = LessonGeneralSerializer
-    lookup_field = "slug"

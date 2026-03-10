@@ -1,9 +1,8 @@
 from django.db import models
-from apps.lessons.models import Lesson
 from uuid import uuid4
+from .lesson import Lesson
 
 
-# Create your models here.
 class Module(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     name = models.CharField(max_length=100)
@@ -12,7 +11,7 @@ class Module(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     module_number = models.PositiveIntegerField(unique=True, default=1)
     course = models.ForeignKey(
-        "courses.Course", on_delete=models.CASCADE, related_name="modules"
+        "Course", on_delete=models.CASCADE, related_name="modules"
     )
     
     @property

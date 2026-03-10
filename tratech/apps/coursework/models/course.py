@@ -1,8 +1,8 @@
 from django.db import models
+from .lesson import Lesson
 from uuid import uuid4
 from django_validated_jsonfield import ValidatedJSONField
 from django.utils.text import slugify
-from apps.lessons.models import Lesson
 
 
 class Course(models.Model):
@@ -36,7 +36,7 @@ class Course(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
             
     @property
@@ -45,3 +45,6 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+ 
+    

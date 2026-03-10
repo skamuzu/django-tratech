@@ -1,7 +1,6 @@
 from django.db import models
-from django.utils.text import slugify
-
 from uuid import uuid4
+from django.utils.text import slugify
 
 class Lesson(models.Model):
    
@@ -12,7 +11,7 @@ class Lesson(models.Model):
     lesson_number = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    module = models.ForeignKey("modules.Module",  on_delete=models.CASCADE, related_name="lessons")
+    module = models.ForeignKey("Module",  on_delete=models.CASCADE, related_name="lessons")
     slug = models.SlugField(blank=True, null=True)
     
     def save(self, *args, **kwargs):
@@ -31,20 +30,3 @@ class Lesson(models.Model):
             
     def __str__(self):
         return self.name
-    
-    
-class Progress(models.Model):
-    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE, related_name="lesson_progress")
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="user_progress")
-    completed = models.BooleanField(default=False)
-    completed_at = models.DateTimeField(null=True, blank=True)
-
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=["user", "lesson"],
-                name="unique_progress",
-            )
-        ]
-    
