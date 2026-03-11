@@ -23,13 +23,18 @@ class UserManager(BaseUserManager):
     
 
 class User(AbstractBaseUser, PermissionsMixin):
+    
+    class RoleChoices(models.TextChoices):
+        ADMIN = "Admin", "AD"
+        STUDENT = "Student", "ST"
+        
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     image = models.URLField(blank=True, null=True)  
     name = models.CharField(max_length=60, null=False, blank=True)
-
+  
     objects = UserManager()
 
     USERNAME_FIELD = "email"

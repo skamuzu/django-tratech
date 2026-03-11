@@ -3,6 +3,8 @@ from dj_rest_auth.serializers import UserDetailsSerializer
 from rest_framework import serializers
 from .models import User
 
+
+
 class CustomRegisterSerializer(RegisterSerializer):
     def get_cleaned_data(self):
         data = super().get_cleaned_data()
